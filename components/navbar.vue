@@ -5,7 +5,6 @@
       <b-navbar-nav class="ml-auto">
         <b-button variant="outline-dark" @click="goToCart"><b-icon-cart></b-icon-cart> View Cart</b-button>
       </b-navbar-nav>
-
     </b-container>
   </b-navbar>
 </template>
