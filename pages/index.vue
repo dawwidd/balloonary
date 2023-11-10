@@ -1,30 +1,16 @@
 <template>
-  <Promotion :imageUrl="promotionImage"/>
+  <div>
+    <Promotion/>
+  </div>
 </template>
 
 <script lang="ts">
+import Vue from 'vue';
 import Promotion from '~/components/promotion.vue'
-import { Character } from '~/types/character';
 
-export default {
+export default Vue.extend({
   components: {
     Promotion
   },
-  data() {
-    return {
-      promotionImage: '',
-      isLoading: false,
-      error: null
-    }
-  },
-  created() {
-    this.fetchCharacterForPromotion()
-  },
-  methods: {
-    async fetchCharacterForPromotion() {
-      const response = await this.$axios.get<Character>(`character/${Math.floor(Math.random()*10)+1}`);
-      this.promotionImage = response.data.image;
-    }
-  }
-}
+})
 </script>
