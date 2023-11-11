@@ -1,18 +1,16 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-12 promotion-tile">
-          <div class="info">
-            <h1 class="discount">25% OFF</h1>
-            <h1 class="promotion-title">Winter Sale</h1>
-            <p class="description">Discover our summer sale</p>
-            <Button buttonText="Shop Now" :showArrow=true></Button>
-          </div>
-          <div class="spinner-wrapper" v-if="isLoading">
-            <b-spinner></b-spinner>
-          </div>
-          <div v-else class="foto" :style="{ backgroundImage: `url(${ imageUrl })`}"></div>
-      </div>
+    <div class="col-12 promotion-tile">
+        <div class="info">
+          <h1 class="discount">25% OFF</h1>
+          <h1 class="promotion-title">Winter Sale</h1>
+          <p class="description">Discover our summer sale</p>
+          <Button buttonText="Shop Now" :showArrow=true></Button>
+        </div>
+        <div class="spinner-wrapper" v-if="isLoading">
+          <b-spinner></b-spinner>
+        </div>
+        <div v-else class="foto" :style="{ backgroundImage: `url(${ imageUrl })`}"></div>
     </div>
   </div>
 </template>
@@ -41,7 +39,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .promotion-tile {
   background-color: #EAEEEF;
   border-radius: 40px;

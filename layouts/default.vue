@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="d-flex flex-column min-vh-100">
     <Navbar class="mb-5"/>
-    <nuxt/>
-    <Footer class="footer"></Footer>
+    <nuxt class="app flex-grow-1"/>
+    <Footer class="footer mt-5"></Footer>
   </div>
 </template>
 
@@ -20,7 +20,12 @@ export default {
 
 <style>
 Footer {
-  position: absolute;
+  position: sticky;
   bottom: 0;
+  z-index: 100;
+}
+
+.app {
+  overflow-y: auto;
 }
 </style>
