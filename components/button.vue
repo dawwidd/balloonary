@@ -11,7 +11,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .custom-button {
   padding: 20px 80px 20px 80px;
   width: fit-content;

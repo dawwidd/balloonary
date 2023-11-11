@@ -6,7 +6,7 @@
     <h1 class="mt-5">Explore our latest drops</h1>
     <div class="row position-relative">
       <div class="scrollable d-flex" ref="scrollContainer">
-        <div class="col-3 product-column" v-for="character in characters" :key="character" :class="{'first-product': index === 0, 'last-product': index === characters.length - 1}">
+        <div class="col-3 product-column" v-for="(character, index) in characters" :key="index" :class="{'first-product': index === 0, 'last-product': index === characters.length - 1}">
           <Product :character="character" :isLoading="isLoading"></Product>
         </div>
       </div>
@@ -69,7 +69,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h1 {
   font-weight: 700;
 }
@@ -77,34 +77,39 @@ h1 {
   min-width: 240px;
   max-width: 270px;
   margin-right: 1rem;
+
+  &.first-product {
+    margin-left: 0;
+  }
+  
+  &.last-product {
+    margin-right: 0;
+  }
 }
 
-.product-column.first-product {
-  margin-left: 0;
-}
-
-.product-column.last-product {
-  margin-right: 0;
-}
 
 .scrollable {
   overflow-x: hidden;
   flex-wrap: nowrap;
+
+  > div {
+    flex: 0 0 auto;
+  }
 }
 
-.col-3:first-child {
-  padding-left: 0;
-  margin-left: 0;
+.col-3 {
+  &:first-child {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  
+  &:last-child {
+    padding-right: 0;
+    margin-right: 0;
+  }
 }
 
-.col-3:last-child {
-  padding-right: 0;
-  margin-right: 0;
-}
 
-.scrollable > div {
-  flex: 0 0 auto;
-}
 
 .scroll-arrows {
   margin-left: 0;
@@ -123,15 +128,17 @@ h1 {
   font-size: 24px;
   cursor: pointer;
   z-index: 10;
+
+  &.left-arrow {
+    left: -20px;
+  }
+
+  &.right-arrow {
+    right: -20px;
+  }
 }
 
-.left-arrow {
-  left: -20px;
-}
 
-.right-arrow {
-  right: -20px;
-}
 
 @media (max-width: 1200px) {
   .scroll-arrows {

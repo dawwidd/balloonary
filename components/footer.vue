@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .footer {
   height: 72px;
   background-color: black;
@@ -33,43 +33,39 @@ export default {
   color: white;
   display: flex;
   align-items: center;
-}
 
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-}
+  .brand {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    padding: 0 12px;
+  }
 
-.brand {
-  font-size: 16px;
-  font-weight: 600;
-  text-align: left;
-}
+  .copyright {
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    opacity: 50%;
 
-.copyright {
-  display: flex;
-  font-size: 14px;
-  justify-content: center;
-  opacity: 50%;
-}
+    span {
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
 
-.socials {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 22px;
-}
+  .socials {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 22px;
 
-.socials > * {
-  margin-left: 12px;
-}
+    > * {
+      margin-left: 12px;
+    }
 
-.socials:hover {
-  cursor: pointer;
-}
-
-@media (max-width: 767px) {
-  .copyright span {
-    display: none;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 </style>

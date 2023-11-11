@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .spinner-wrapper {
   display: flex;
   align-items: center;

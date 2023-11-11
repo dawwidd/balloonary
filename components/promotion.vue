@@ -39,34 +39,34 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .promotion-tile {
   background-color: #EAEEEF;
   border-radius: 40px;
   display: flex;
   flex-direction: row;
   padding: unset;
-}
 
-.info {
-  padding: 64px;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-}
+  .info {
+    padding: 64px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+  }
 
-.foto {
-  padding-right: unset;
-  flex-grow: 1;
-  border-radius: 0 40px 40px 0;
-  background-size: cover;
-}
+  .foto {
+    padding-right: unset;
+    flex-grow: 1;
+    border-radius: 0 40px 40px 0;
+    background-size: cover;
+  }
 
-.spinner-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
+  .spinner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
 }
 
 .discount {
@@ -88,17 +88,17 @@ export default {
   .promotion-tile {
     flex-direction: column-reverse;
     height: 40rem;
-  }
 
-  .info {
-    width: 100%;
-    height: 60%;
-    align-items: center;
-  }
+    .info {
+      width: 100%;
+      height: 60%;
+      align-items: center;
+    }
 
-  .foto {
-    flex-grow: 1;
-    border-radius: 40px 40px 0 0;
+    .foto {
+      flex-grow: 1;
+      border-radius: 40px 40px 0 0;
+    }
   }
 }
 

@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 Footer {
   position: sticky;
   bottom: 0;
