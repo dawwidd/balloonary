@@ -5,9 +5,12 @@
     </div>
     <h1 class="mt-5">Explore our latest drops</h1>
     <div class="row position-relative">
-      <div class="scrollable d-flex" ref="scrollContainer">
-        <div class="col-3 product-column" v-for="(character, index) in characters" :key="index" :class="{'first-product': index === 0, 'last-product': index === characters.length - 1}">
-          <Product :character="character" :isLoading="isLoading"></Product>
+      <div class="spinner-wrapper" v-if="isLoading">
+          <b-spinner></b-spinner>
+        </div>
+      <div v-else class="scrollable d-flex" ref="scrollContainer">
+        <div class="col-3 product-column pt-3" v-for="(character, index) in characters" :key="index" :class="{'first-product': index === 0, 'last-product': index === characters.length - 1}">
+          <Product :character="character"></Product>
         </div>
       </div>
     </div>
@@ -77,14 +80,41 @@ h1 {
   min-width: 240px;
   max-width: 270px;
   margin-right: 1rem;
+  position: relative;
+  cursor: pointer;
+
+  &:hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+  }
 
   &.first-product {
     margin-left: 0;
+    &:hover::before {
+      right: 14px;
+    }
   }
   
   &.last-product {
     margin-right: 0;
+
+    &:hover::before {
+      left: 14px;
+    }
   }
+}
+
+.spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 
