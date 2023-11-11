@@ -1,5 +1,5 @@
 <template>
-  <div class="container" @click="sayHello()">
+  <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="foto" :style="{ backgroundImage: `url(${ character.image })`}"></div>
@@ -34,9 +34,6 @@ export default {
       }
       return Math.floor(sum/10);
     },
-    sayHello() {
-      console.log("hello");
-    }
   }
 }
 </script>

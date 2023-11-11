@@ -5,12 +5,12 @@
           <h1 class="discount">25% OFF</h1>
           <h1 class="promotion-title">Winter Sale</h1>
           <p class="description">Discover our summer sale</p>
-          <Button buttonText="Shop Now" :showArrow=true></Button>
+          <Button buttonText="Shop Now" :showArrow=true @click="redirectToDetails"></Button>
         </div>
         <div class="spinner-wrapper" v-if="isLoading">
           <b-spinner></b-spinner>
         </div>
-        <div v-else class="foto" :style="{ backgroundImage: `url(${ imageUrl })`}"></div>
+        <div v-else class="foto" :style="{ backgroundImage: `url(${ character.image })`}"></div>
     </div>
   </div>
 </template>
@@ -24,18 +24,23 @@ export default {
   },
   data() {
     return {
-      imageUrl: '',
+      character: null,
       isLoading: true,
       error: null
     }
   },
   mounted() {
-    this.$axios.get(`character/${Math.floor(Math.random()*20)+1}`).then(response => {
-      this.imageUrl = response.data.image;
+    this.$axios.get(`character/${Math.floor(Math.random()*826)+1}`).then(response => {
+      this.character = response.data;
     }).finally(() => {
       this.isLoading = false;
     })
   },
+  methods: {
+    redirectToDetails() {
+      this.$router.push(`details/${this.character.id}`)
+    }
+  }
 }
 </script>
 

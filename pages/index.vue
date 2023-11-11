@@ -9,7 +9,7 @@
           <b-spinner></b-spinner>
         </div>
       <div v-else class="scrollable d-flex" ref="scrollContainer">
-        <div class="col-3 product-column pt-3" v-for="(character, index) in characters" :key="index" :class="{'first-product': index === 0, 'last-product': index === characters.length - 1}">
+        <div @click="redirectToDetails(character.id)" class="col-3 product-column pt-3" v-for="(character, index) in characters" :key="index" :class="{'first-product': index === 0, 'last-product': index === characters.length - 1}">
           <Product :character="character"></Product>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default Vue.extend({
     getNRandomNumbers(n: number) {
       const result = [];
       while(result.length < n) {
-        const r = Math.floor(Math.random() * 20) + 1;
+        const r = Math.floor(Math.random() * 826) + 1;
         if(result.indexOf(r) === -1) result.push(r);
       }
       return result;
@@ -67,6 +67,9 @@ export default Vue.extend({
       if (container) {
         container.scrollBy({ left: container.offsetWidth, behavior: 'smooth' });
       }
+    },
+    redirectToDetails(characterId: number) {
+      this.$router.push(`details/${characterId}`);
     }
   }
 })
@@ -82,6 +85,11 @@ h1 {
   margin-right: 1rem;
   position: relative;
   cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
   &:hover::before {
     content: '';
