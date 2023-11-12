@@ -16,10 +16,10 @@
     <div class="form">
       <div class="col-12">
         <span class="label">Quantity</span>
-        <QuantityInput class="mt-2"/>
+        <QuantityInput ref="quantityInput" class="mt-2"/>
       </div>
       <div class="col-12">
-        <Button class="w-100" buttonText="Add to Cart" :showArrow=false></Button>
+        <Button class="w-100" buttonText="Add to Cart" :showArrow=false @click="displayQuantity()"></Button>
       </div>
     </div>
   </div>
@@ -51,6 +51,9 @@ export default {
       }
       return (sum/10).toFixed(2);
     },
+    displayQuantity() {
+      console.log(this.$refs.quantityInput.quantity);
+    }
   }
 }
 </script>

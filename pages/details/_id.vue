@@ -12,9 +12,7 @@
           <ProductForm :character="character"/>
         </div>
       </div>
-      <div class="row">
-  
-      </div>
+      <Details :character="character"></Details>
     </template>
   </div>
 </template>
