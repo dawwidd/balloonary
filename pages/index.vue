@@ -6,8 +6,8 @@
     <h1 class="mt-5">Explore our latest drops</h1>
     <div class="row position-relative">
       <div class="spinner-wrapper" v-if="isLoading">
-          <b-spinner></b-spinner>
-        </div>
+        <b-spinner></b-spinner>
+      </div>
       <div v-else class="scrollable d-flex" ref="scrollContainer">
         <div @click="redirectToDetails(character.id)" class="col-3 product-column pt-3" v-for="(character, index) in characters" :key="index" :class="{'first-product': index === 0, 'last-product': index === characters.length - 1}">
           <Product :character="character"></Product>

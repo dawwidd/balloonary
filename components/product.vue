@@ -13,7 +13,7 @@
         <span>Species: {{ character.species }}</span>
       </div>
       <div class="col-12">
-        <span class="name">{{ determinePrice(character.name) }}$</span>
+        <span class="price">${{ determinePrice(character.name) }}</span>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
         const char_code = word.charCodeAt(i);
         sum += char_code;
       }
-      return Math.floor(sum/10);
+      return (sum/10).toFixed(2);
     },
   }
 }
@@ -46,7 +46,7 @@ export default {
   border-radius: 20px;
 }
 
-.name {
+.name, .price {
   font-weight: 700;
   font-size: 20px;
 }
