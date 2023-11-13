@@ -45,7 +45,7 @@ export default {
   },
   mounted() {
     this.getEpisodesDetails().then(res => {
-      this.episodes = res.data;
+      this.episodes = res.data.length > 1 ? res.data : [res.data];
     }).finally(() => {
       this.isLoading = false;
     })
