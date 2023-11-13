@@ -44,8 +44,8 @@ export default {
     }
   },
   mounted() {
-    this.getEpisodesDetails().then(episodesResponses => {
-      this.episodes = episodesResponses.map(res => res.data);
+    this.getEpisodesDetails().then(res => {
+      this.episodes = res.data;
     }).finally(() => {
       this.isLoading = false;
     })
@@ -57,11 +57,7 @@ export default {
         return urlSplit.slice(-1);
       });
 
-      const episodePromises = episodeIds.map(episodeId => {
-        return this.$axios.get(`episode/${episodeId}`);
-      });
-
-      return Promise.all(episodePromises);
+      return this.$axios.get(`episode/${episodeIds}`);
     }
   }
 }
