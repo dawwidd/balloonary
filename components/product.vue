@@ -13,7 +13,7 @@
         <span>Species: {{ character.species }}</span>
       </div>
       <div class="col-12">
-        <span class="price">${{ determinePrice(character.name) }}</span>
+        <span class="price">${{ price.toFixed(2) }}</span>
       </div>
     </div>
   </div>
@@ -25,6 +25,14 @@ export default {
     character: null,
     isLoading: true
   },
+  data() {
+    return {
+      price: 0
+    }
+  },
+  mounted() {
+    this.determinePrice(this.character.name);
+  },
   methods: {
     determinePrice(word) {
       let sum = 0;
@@ -32,7 +40,7 @@ export default {
         const char_code = word.charCodeAt(i);
         sum += char_code;
       }
-      return (sum/10).toFixed(2);
+      this.price = sum/10;
     },
   }
 }

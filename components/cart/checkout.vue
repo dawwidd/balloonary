@@ -7,19 +7,19 @@
       <div class="totals">
         <div class="col-12 mt-3">
           <span>Subtotal</span>
-          <span>${{ subtotal }}</span>
+          <span>${{ subtotal.toFixed(2) }}</span>
         </div>
         <div class="col-12 mt-3">
           <span>Shipping and delivery</span>
-          <span>${{ shipping }}</span>
+          <span>${{ shipping.toFixed(2) }}</span>
         </div>
         <div class="col-12 mt-3">
           <span>Tax</span>
-          <span>${{ tax }}</span>
+          <span>${{ tax.toFixed(2) }}</span>
         </div>
         <div class="col-12 mt-3">
           <span>Discount</span>
-          <span class="discount">-$6.00</span>
+          <span class="discount">-${{ discount.toFixed(2) }}</span>
         </div>
       </div>
     </div>
@@ -29,13 +29,13 @@
         <div class="totals">
           <div>
             <span class="total">Total</span>
-            <span>$90.00</span>
+            <span>${{ getTotal().toFixed(2) }}</span>
           </div>
         </div>
       </div>
       <div class="spacer"></div>
       <div class="col-12">
-        <Button class="w-100" buttonText="Checkout" :showArrow=true @click="displayQuantity()"></Button>
+        <Button class="w-100" buttonText="Checkout" :showArrow=true @click="checkout()"></Button>
       </div>
     </div>
   </div>
@@ -50,10 +50,19 @@ export default {
   },
   data() {
     return {
-      subtotal: (90).toFixed(2),
-      shipping: (90).toFixed(2),
-      tax: (90).toFixed(2),
-      discount: (90).toFixed(2),
+      subtotal: this.$store.getters.cartTotal,
+      shipping: 15,
+      tax: 9,
+      discount: 6,
+    }
+  },
+  methods: {
+    checkout() {
+      this.$store.dispatch('clearCart');
+      this.$router.push('/');
+    },
+    getTotal() {
+      return this.subtotal + this.shipping + this.tax - this.discount;
     }
   }
 }

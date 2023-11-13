@@ -9,7 +9,7 @@
         <span class="mr-2">Origin: {{ character.origin.name }}</span>
       </div>
       <div class="col-12 mt-3">
-        <span class="price">${{ determinePrice(character.name) }}</span>
+        <span class="price">${{ price }}</span>
       </div>
     </div>
     <hr class="separator-line">
@@ -19,7 +19,7 @@
         <QuantityInput ref="quantityInput" class="mt-2"/>
       </div>
       <div class="col-12">
-        <Button class="w-100" buttonText="Add to Cart" :showArrow=false @click="displayQuantity()"></Button>
+        <Button class="w-100" buttonText="Add to Cart" :showArrow=false @click="addToCart()"></Button>
       </div>
     </div>
   </div>
@@ -40,7 +40,11 @@ export default {
   data() {
     return {
       quantity: 1,
+      price: 0
     }
+  },
+  mounted() {
+    this.determinePrice(this.character.name);
   },
   methods: {
     determinePrice(word) {
@@ -49,11 +53,15 @@ export default {
         const char_code = word.charCodeAt(i);
         sum += char_code;
       }
-      return (sum/10).toFixed(2);
+      this.price = sum/10;
     },
-    displayQuantity() {
-      console.log(this.$refs.quantityInput.quantity);
-    }
+    addToCart() {
+      this.$store.dispatch('addToCart', {
+        id: this.character.id,
+        price: this.price,
+        quantity: this.$refs.quantityInput.quantity
+      })
+    },
   }
 }
 </script>

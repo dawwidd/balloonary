@@ -16,10 +16,12 @@ export default {
   methods: {
     increment() {
       this.quantity++;
+      this.$emit('increment');
     },
     decrement() {
       if (this.quantity > 1) {
         this.quantity--;
+        this.$emit('decrement');
       }
     },
   }
