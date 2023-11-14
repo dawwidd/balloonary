@@ -16,7 +16,10 @@ export const mutations = {
     state.cart = [];
   },
   removeFromCart(state, item) {
-    state.cart = state.cart.filter(cartItem => cartItem.id = item.id);
+    const index = state.cart.findIndex((cartItem) => cartItem.id === item.id);
+    if(index !== -1) {
+      state.cart.splice(index, 1);
+    }
   },
   incrementItem(state, item) {
     const characterAlreadyInCart = state.cart.find((cartItem) => cartItem.id === item.id);
@@ -29,6 +32,10 @@ export const mutations = {
     if(characterAlreadyInCart) {
       characterAlreadyInCart.quantity -= 1;
     }
+  },
+  updateItem(state, item) {
+    const index = state.cart.findIndex((cartItem) => cartItem.id === item.id);
+    state.cart[index].quantity = item.quantity;
   }
 }
 
@@ -47,6 +54,9 @@ export const actions = {
   },
   decrementItem({ commit }, data) {
     commit('decrementItem', data);
+  },
+  updateItem({ commit }, data) {
+    commit('updateItem', data);
   }
 }
 

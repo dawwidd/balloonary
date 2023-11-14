@@ -16,7 +16,7 @@
     <div class="form">
       <div class="col-12">
         <span class="label">Quantity</span>
-        <QuantityInput ref="quantityInput" class="mt-2"/>
+        <QuantityInput :initialQuantity="1" ref="quantityInput" class="mt-2"/>
       </div>
       <div class="col-12">
         <Button class="w-100" buttonText="Add to Cart" :showArrow=false @click="addToCart()"></Button>

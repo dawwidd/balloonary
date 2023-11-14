@@ -29,7 +29,7 @@
         <div class="totals">
           <div>
             <span class="total">Total</span>
-            <span>${{ getTotal().toFixed(2) }}</span>
+            <span>${{ getTotal.toFixed(2) }}</span>
           </div>
         </div>
       </div>
@@ -43,17 +43,27 @@
 
 <script>
 import Button from '~/components/button.vue'
+import { DISCOUNT_RATE, SHIPPING_RATE, TAX_RATE } from '~/consts';
 
 export default {
   components: {
     Button
   },
-  data() {
-    return {
-      subtotal: this.$store.getters.cartTotal,
-      shipping: 15,
-      tax: 9,
-      discount: 6,
+  computed: {
+    subtotal() {
+      return this.$store.getters.cartTotal;
+    },
+    shipping() {
+      return this.subtotal * SHIPPING_RATE;
+    },
+    tax() {
+      return this.subtotal * TAX_RATE;
+    },
+    discount() {
+      return this.subtotal * DISCOUNT_RATE;
+    },
+    getTotal() {
+      return this.subtotal + this.shipping + this.tax - this.discount;
     }
   },
   methods: {
@@ -61,9 +71,6 @@ export default {
       this.$store.dispatch('clearCart');
       this.$router.push('/');
     },
-    getTotal() {
-      return this.subtotal + this.shipping + this.tax - this.discount;
-    }
   }
 }
 </script>

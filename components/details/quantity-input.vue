@@ -1,17 +1,31 @@
 <template>
   <div>
     <button @click="decrement" class="quantity-change-button">-</button>
-    <input v-model.number="quantity" class="quantity-input"/>
+    <input @blur="quantityChange" v-model.number="quantity" class="quantity-input"/>
     <button @click="increment" class="quantity-change-button">+</button>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    initialQuantity: Number
+  },
   data() {
     return {
       quantity: 1,
     }
+  },
+  watch: {
+    quantity(newValue) {
+      if(newValue < 1) {
+        this.quantity = 1;
+        this.quantityChange();
+      }
+    }
+  },
+  mounted() {
+    this.quantity = this.initialQuantity;
   },
   methods: {
     increment() {
@@ -24,6 +38,9 @@ export default {
         this.$emit('decrement');
       }
     },
+    quantityChange() {
+      this.$emit('quantity-change', this.quantity);
+    }
   }
 }
 </script>
