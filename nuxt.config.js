@@ -37,21 +37,10 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
-    // other modules...
   ],
 
-  // proxy: {
-  //   '/api/': {
-  //     target: 'https://thingproxy.freeboard.io/fetch/',
-  //     pathRewrite: { '^/api/': '' },
-  //     changeOrigin: true, // for vhosted sites, changes host header to match to target's host
-  //   }
-  // },
-
   axios: {
-    baseURL: 'https://thingproxy.freeboard.io/fetch/https://rickandmortyapi.com/api/', // Don't set this since we're using a proxy
-    // proxy: true, // Enable the axios proxy
+    baseURL: 'https://thingproxy.freeboard.io/fetch/https://rickandmortyapi.com/api/',
   },
   
   bootstrapVue: {
