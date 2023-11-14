@@ -9,7 +9,7 @@
         <span class="mr-2">Origin: {{ character.origin.name }}</span>
       </div>
       <div class="col-12 mt-3">
-        <span class="price">${{ price }}</span>
+        <span class="price">${{ price.toFixed(2) }}</span>
       </div>
     </div>
     <hr class="separator-line">
