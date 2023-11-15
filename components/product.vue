@@ -34,6 +34,12 @@ export default {
     this.determinePrice(this.character.name);
   },
   methods: {
+    /**
+     * Deterimine the price based on character's name.
+     * Arbitrary choice, given that there are no other values in the API's character model
+     * one could use to assign a price.
+     * @param {string} word
+     */
     determinePrice(word) {
       let sum = 0;
       for (let i = 0; i < word.length; i++) {

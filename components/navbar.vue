@@ -20,6 +20,9 @@ export default {
     }
   },
   computed: {
+    /**
+     * Update the counter every time a new character is added/removed to/from the store
+     */
     cartItemCount() {
       return this.$store.getters.cartItemCount;
     }

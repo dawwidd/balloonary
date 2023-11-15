@@ -47,6 +47,12 @@ export default {
     this.determinePrice(this.character.name);
   },
   methods: {
+    /**
+     * Deterimine the price based on character's name.
+     * 
+     * An arbitrary choice, given that there are no other values in the API's character model
+     * one could use to assign a price.
+     */
     determinePrice(word) {
       let sum = 0;
       for (let i = 0; i < word.length; i++) {
@@ -55,6 +61,9 @@ export default {
       }
       this.price = sum/10;
     },
+    /**
+     * Add the character, their quantity, and price to the store
+     */
     addToCart() {
       this.$store.dispatch('addToCart', {
         id: this.character.id,

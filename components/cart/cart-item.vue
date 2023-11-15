@@ -54,32 +54,41 @@ export default {
     })
   },
   methods: {
+    /**
+     * Increment item's quantity in the store.
+     */
     incrementItem() {
       this.$store.dispatch('incrementItem', {
         id: this.character.id,
         quantity: this.$refs.quantityInput.quantity
       });
     },
+    /**
+     * Decrement item's quantity in the store.
+     */
     decrementItem() {
       this.$store.dispatch('decrementItem', {
         id: this.character.id,
         quantity: this.$refs.quantityInput.quantity
       });
     },
+    /**
+     * Remove the item from the store.
+     */
     removeFromCart() {
       this.$store.dispatch('removeFromCart', {
         id: this.character.id
       })
     },
+    /**
+     * Update item's quantity in the store.
+     */
     updateItem() {
       this.$store.dispatch('updateItem', {
         id: this.character.id,
         quantity: this.$refs.quantityInput.quantity
       })
     },
-    redirectToCharacter() {
-      this.$router.push(`character/${this.character.id}`)
-    }
   }
 }
 </script>

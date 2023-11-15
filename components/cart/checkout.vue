@@ -50,6 +50,10 @@ export default {
     Button
   },
   computed: {
+    /**
+     * Reactively update all the subtotal, shipping, tax, discount and total
+     * values based on the Cart's state
+     */
     subtotal() {
       return this.$store.getters.cartTotal;
     },
@@ -67,6 +71,9 @@ export default {
     }
   },
   methods: {
+    /**
+     * Reset the cart and return to the index page
+     */
     checkout() {
       this.$store.dispatch('clearCart');
       this.$router.push('/');

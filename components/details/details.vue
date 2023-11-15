@@ -51,6 +51,9 @@ export default {
     })
   },
   methods: {
+    /**
+     * Retrieve details about all episodes the character appears in
+     */
     getEpisodesDetails() {
       const episodeIds = this.character.episode.map(episodeUrl => {
         const urlSplit = episodeUrl.split('/');

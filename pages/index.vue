@@ -48,6 +48,10 @@ export default Vue.extend({
     })
   },
   methods: {
+    /**
+     * Generate an array of n random numbers
+     * @param {number} n
+     */
     getNRandomNumbers(n: number) {
       const result = [];
       while(result.length < n) {

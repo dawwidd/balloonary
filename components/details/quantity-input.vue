@@ -17,6 +17,10 @@ export default {
     }
   },
   watch: {
+    /**
+     * Watch the quantity value and don't let the user set it below 1.
+     * @param {number} newValue 
+     */
     quantity(newValue) {
       if(newValue < 1) {
         this.quantity = 1;
@@ -28,16 +32,23 @@ export default {
     this.quantity = this.initialQuantity;
   },
   methods: {
+    /**
+     * Emit event and update quantity when user increments the input's value.
+     */
     increment() {
       this.quantity++;
       this.$emit('increment');
     },
+    /**
+     * Emit event and update quantity when user decrements the input's value.
+     */
     decrement() {
-      if (this.quantity > 1) {
-        this.quantity--;
-        this.$emit('decrement');
-      }
+      this.quantity--;
+      this.$emit('decrement');
     },
+    /**
+     * Emit event when user manually changes the input's value.
+     */
     quantityChange() {
       this.$emit('quantity-change', this.quantity);
     }
