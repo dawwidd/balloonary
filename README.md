@@ -1,5 +1,7 @@
 # balloonary
 
+Fake e-commerce app utilizing https://rickandmortyapi.com/
+
 ## Build Setup
 
 ```bash
